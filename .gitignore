@@ -1,0 +1,11 @@
+env/
+.env
+*.env
+dataset/*
+unsloth_compiled_cache
+__pycache__/
+chat_example.py
+finetune_chunks/*
+!finetune_chunks/chunk_000.jsonl
+!dataset/instructions_finetune_dataset_1k.jsonl
+fine-tunning-bkp.ipynb
