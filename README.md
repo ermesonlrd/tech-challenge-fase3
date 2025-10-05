@@ -79,9 +79,9 @@ Executar o arquivo **fine-tunning.ipynb** para realizar o treinamento. Recomenda
 Modelo utilizado para o fine-tuning: unsloth/llama-3-8b-bnb-4bit
 Ambiente de treinamento: Google Colab com GPU A100.
 
-Tempo de treinamento:
-1k de dataset e 5 épocas - 08:11
-18k de dataset e 4 épocas - 1:09:30
-187k de dataset e 2 épocas - 5:59:21
+Tempo de treinamento:  
+1k de dataset e 5 épocas - 08:11  
+18k de dataset e 4 épocas - 1:09:30  
+187k de dataset e 2 épocas - 5:59:21  
 
 Documentação dos parâmetros estão no arquivo **fine-tunning.ipynb**.
