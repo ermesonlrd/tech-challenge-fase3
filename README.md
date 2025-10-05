@@ -13,7 +13,7 @@ source env/bin/activate
 * [config.py](config.py) - carrega variáveis de ambiente de um arquivo .env para configurar a URL base, chave da API e o modelo LLM como o ChatGPT, Deepseek ou Ollama através de uma interface OpenAI-compatível.
 * [dataset_utils.py](dataset_utils.py) - fornece utilitários para processar o dataset Amazon LF-1.3M, com os métodos: load_amazon_trn() (carrega dados JSON), clean_content() (limpa e trunca conteúdo), save_chunk() (salva blocos em arquivos JSONL), e sanitize_text() (remove caracteres problemáticos e normaliza texto).
 * [finetune_dataset_chunked.py](finetune_dataset_chunked.py) - processa o dataset Amazon para criar dados de fine-tuning usando LLMs, com os métodos: validate_and_fix_json() (corrige JSON malformado), chat_response() (chama API com retry e tratamento de erros), build_example() (gera perguntas/respostas para produtos), e create_finetune_dataset() (processa dataset em chunks salvando arquivos JSONL para treinamento).
-* [instructions_finetune_dataset.py](instructions_finetune_dataset.py) - converte o dataset de fine-tuning para formato de instruções, com o método: normalize_response() (converte dicts/listas em strings limpas) e processa cada par pergunta-resposta transformando-os no formato "### Instruction:" e "### Response:" adequado para treinamento do modelo.
+* [instructions_finetune_dataset.py](instructions_finetune_dataset.py) - converte o dataset de fine-tuning para formato de instruções, com o método: normalize_response() (converte dicts/listas em strings limpas) e processa cada par pergunta-resposta transformando-os no formato adequado para treinamento do modelo.
 * [fine-tunning.ipynb](fine-tunning.ipynb) - arquivo do Jupyter Notebook para fine-tuning de LLMs usando Unsloth, contendo: instalação de dependências (unsloth, xformers, bitsandbytes), carregamento do modelo Llama-3-8b com quantização 4-bit, configuração LoRA/PEFT, carregamento do dataset de instruções, configuração do SFTTrainer com parâmetros otimizados, e execução do treinamento.
 
 ## Execução
@@ -85,3 +85,9 @@ Tempo de treinamento:
 187k de dataset e 2 épocas - 5:59:21  
 
 Documentação dos parâmetros estão no arquivo **fine-tunning.ipynb**.
+
+## Conclusão
+
+O projeto mostrou de forma prática como preparar e treinar um modelo de linguagem em larga escala. A preparação do dataset localmente com um modelo menor (llama3.2:3b via Ollama) foi viável, mas apresentou falhas em algumas perguntas e respostas geradas, exigindo cuidados extras na validação. Para datasets muito grandes, o custo de tempo e recursos se torna elevado, o que reforça a importância de estratégias de amostragem e otimização.
+
+O processo de geração, concatenação, conversão e treinamento demonstrou-se estruturado e reprodutível, embora dependente de boa infraestrutura de GPU. Em síntese, a atividade evidenciou tanto o potencial quanto os desafios do fine-tuning, destacando que a qualidade do dataset é tão importante quanto a configuração do treinamento para alcançar bons resultados.
