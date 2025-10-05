@@ -223,7 +223,7 @@ def create_finetune_dataset(data, max_examples=-1, start_chunk_index=0):
 # MAX_TOTAL_EXAMPLES = 100
 data = load_amazon_trn()
 
-create_finetune_dataset(data=data, max_examples=MAX_TOTAL_EXAMPLES, start_chunk_index=3)
+create_finetune_dataset(data=data, max_examples=MAX_TOTAL_EXAMPLES, start_chunk_index=0)
 # source env/bin/activate
 # time python finetune_dataset_chunked.py
 # cat finetune_chunks/* > dataset/finetune_dataset_merged.jsonl
